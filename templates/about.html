@@ -1,3 +1,46 @@
-{% extends 'base.html' %} {% block content %}
-<h1>About</h1>
-{% endblock %}
+    {% extends 'base.html' %}
+    {% block content %}
+
+
+    
+
+    <h2>{{ page_title }}</h2>
+    <p> Beings from across the galaxy have been following Revan's teachings since after the destruction of the Star Forge, but did not become a unified body until after his capture and 
+        imprisonment at the Maelstrom Prison facility. Loose groups formed a camp on Dromund Kaas, believing that much of what they knew came from the influence Revan gave as a Sith r
+        ather than a Jedi.
+    </p>
+    
+    <p>
+        After the Cold War, the Order became more of a unified body under the leadership of Revan himself, having been released from Imperial capture and winning a major victory from his past at T
+        he Foundry. Revan called upon more and more beings from inside the Galactic Republic and Sith Empire, and soon millions of people from within both militaries secretly defected to the Order. 
+        Neither the Republic nor Empire discovered the deception until too late, even after having dismantled several Revanite operations on Manaan and Lehon.
+    </p>
+
+    {% for member in cult %}
+    
+    <div class="row featurette">
+
+        {% if loop.index % 2 != 0 %}
+        <div class="col-md-7">
+            <h3>{{ loop.index }} . {{ member.name }} </h3>
+            <p> {{ member.description }} </p>
+        </div>
+
+        <div class="col-md-5">
+            <img class="featurette-image img-responsive" src="{{ member.img_source }}" alt="Picture of {{ member.name }}">
+        </div>
+        {% else %}
+            <div class="col-md-5">
+                <img class="featurette-image img-responsive" src="{{ member.img_source }}" alt="Picture of {{ member.name }}">
+            </div>
+                <div class="col-md-7">
+                <h3>{{ loop.index }} . {{ member.name }} </h3>
+                <p> {{ member.description }} </p>
+            </div>
+
+        
+
+        {% endif %}
+    </div>
+
+    <hr class="featurette-divider"> {% endfor %} {% endblock %}
