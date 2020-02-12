@@ -22,7 +22,7 @@
 
         {% if loop.index % 2 != 0 %}
         <div class="col-md-7">
-            <h3>{{ loop.index }} . {{ member.name }} </h3>
+            <h3> <a href="/about/{{ member.url }}"> {{ loop.index }} . {{ member.name }} </a> </h3>
             <p> {{ member.description }} </p>
         </div>
 
@@ -34,7 +34,7 @@
                 <img class="featurette-image img-responsive" src="{{ member.img_source }}" alt="Picture of {{ member.name }}">
             </div>
                 <div class="col-md-7">
-                <h3>{{ loop.index }} . {{ member.name }} </h3>
+                <h3> <a href="/about/{{ member.url }}"> {{ loop.index }} . {{ member.name }} </a> </h3>
                 <p> {{ member.description }} </p>
             </div>
 
@@ -43,4 +43,10 @@
         {% endif %}
     </div>
 
-    <hr class="featurette-divider"> {% endfor %} {% endblock %}
+    {% if loop.index != 3 %}
+
+        <hr class="featurette-divider">
+    
+    {% endif %}
+    
+    {% endfor %} {% endblock %}
